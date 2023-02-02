@@ -5,7 +5,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  generateBtn.write(passwordText);
   passwordText.value = password;
 
 }
@@ -24,7 +23,13 @@ function generatePassword() {
 
   var results = [];
   var input = [];
-
+  if (lengthPrompt < 8) {
+    lengthPrompt = 8;
+  }
+  if (lengthPrompt > 128) {
+    lengthPrompt = 128;
+  }
+  console.log(lengthPrompt);
   if (upCharPrompt){
     results = results + upCharacters;
   }
