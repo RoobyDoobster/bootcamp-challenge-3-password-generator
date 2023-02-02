@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  generateBtn.log(passwordText);
+  generateBtn.write(passwordText);
   passwordText.value = password;
 
 }
@@ -17,14 +17,13 @@ function generatePassword() {
   var numCharPrompt = confirm("Would you like numbers?");
   var speCharPrompt = confirm("Would you like special characters?")
 
-  var passMinLength = 8;
-  var passMaxLength = 128;
   var upCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   var lowCharacters = "abcdefghijklmnopqrstuvwxyz".split("");
   var numCharacters = "0123456789".split("");
   var speCharacters = "!@#$%^&*()-_".split("");
 
   var results = [];
+  var input = [];
 
   if (upCharPrompt){
     results = results + upCharacters;
@@ -38,7 +37,13 @@ function generatePassword() {
   if (speCharPrompt){
     results = results + speCharacters;
   }
+
+  for (var i = 0; i < lengthPrompt; i++) {
+    input.push (results[Math.floor(Math.random() * results.length)]);
+  }
+
+  return input.join("");
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);// should be writePassword
+generateBtn.addEventListener("click", writePassword);// should be writePassword
