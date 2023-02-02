@@ -11,11 +11,11 @@ function writePassword() {
 }
 
 function generatePassword() {
-  var lengthPrompt = window.prompt("Choose length between 8 & 128 characters");
-  var lowCharPrompt = window.prompt("Would you like lowercase letters?");
-  var upCharPrompt = window.prompt("Would you like uppercase letters?");
-  var numCharPrompt = window.prompt("Would you like numbers?");
-  var speCharPrompt = window.prompt("Would you like special characters?")
+  var lengthPrompt = prompt("Choose length between 8 & 128 characters");
+  var lowCharPrompt = confirm("Would you like lowercase letters?");
+  var upCharPrompt = confirm("Would you like uppercase letters?");
+  var numCharPrompt = confirm("Would you like numbers?");
+  var speCharPrompt = confirm("Would you like special characters?")
 
   var passMinLength = 8;
   var passMaxLength = 128;
@@ -24,6 +24,20 @@ function generatePassword() {
   var numCharacters = "0123456789".split("");
   var speCharacters = "!@#$%^&*()-_".split("");
 
+  var results = [];
+
+  if (upCharPrompt){
+    results = results + upCharacters;
+  }
+  if (lowCharPrompt){
+    results = results + lowCharacters;
+  }
+  if (numCharPrompt){
+    results = results + numCharacters;
+  }
+  if (speCharPrompt){
+    results = results + speCharacters;
+  }
 }
 
 // Add event listener to generate button
